@@ -6,7 +6,7 @@ gt scaffold for npm packages
 
 - Check if you have installed nodejs.
 - Check if you have installed [gt](https://github.com/vivaxy/granturismo).
-- Check if you have setup gt config for this scaffold. If not run `gt config add vivaxy/gt-npm-package https://github.com/vivaxy/granturismo.git`
+- Check if you have setup gt config for this scaffold. If not run `gt config add vivaxy/gt-npm-package https://github.com/vivaxy/gt-npm-package.git`
 - Make a directory for your new project. `mkdir awesome-project`;
 - Go into your project directory. `cd awesome-project`;
 - Run `gt init`
