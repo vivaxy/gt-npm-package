@@ -26,6 +26,7 @@ const copyFiles = async() => {
         '.editorconfig',
         '.eslintrc',
         '.gitignore',
+        '.npmignore',
         '.npmrc',
         'LICENSE',
         'yarn.lock',
