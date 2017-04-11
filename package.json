@@ -13,12 +13,14 @@
     "eslint": "^3.19.0",
     "eslint-config-vivaxy": "^0.1.1",
     "execa": "^0.6.3",
-    "listr": "^0.11.0"
+    "listr": "^0.11.0",
+    "standard-version": "^4.0.0"
   },
   "scripts": {
     "build": "node ./scripts/build.js",
     "lint": "eslint ./src",
-    "release": "npm run lint && npm run build && standard-version && git push --follow-tags && npm publish"
+    "release": "npm run lint && npm run build && standard-version && git push --follow-tags && npm publish",
+    "release-gt": "standard-version && git push --follow-tags"
   },
   "repository": {
     "type": "git",

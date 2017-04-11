@@ -13,6 +13,12 @@ gt scaffold for npm packages
 - Select `vivaxy/gt-npm-package`
 - Enjoy!
 
+## How To Contribute
+
+- Edit codes
+- Commit your changes
+- Publish by `yarn run release-gt`
+
 ----------
 
 # __________
