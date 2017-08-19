@@ -29,6 +29,7 @@ const copyFiles = async() => {
         '.npmignore',
         '.npmrc',
         'LICENSE',
+        'CONTRIBUTING.md',
         'yarn.lock',
     ];
 
@@ -99,9 +100,9 @@ const updateREADME = async() => {
     await sleep(1000);
     await presets.updateFile(filename, (content) => {
         const projectData = content.split('----------\n\n')[1];
-        return projectData.replace(/__________/, `${project.name}
-
-Initialized by [vivaxy/gt-npm-package](https://github.com/vivaxy/gt-npm-package)`);
+        return projectData
+            .replace(/{{ projectName }}/g, project.name)
+            .replace(/{{ gtAnnotation }}/g, 'Initialized by [vivaxy/gt-npm-package](https://github.com/vivaxy/gt-npm-package).');
     });
 };
 

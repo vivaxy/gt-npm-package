@@ -21,5 +21,35 @@ gt scaffold for npm packages
 
 ----------
 
-# __________
+# {{ projectName }}
 
+[![NPM Version](http://img.shields.io/npm/v/{{ projectName }}.svg?style=flat-square)](https://www.npmjs.com/package/{{ projectName }})
+[![NPM Downloads](https://img.shields.io/npm/dt/{{ projectName }}.svg?style=flat-square)](https://www.npmjs.com/package/{{ projectName }})
+[![MIT License](https://img.shields.io/npm/l/{{ projectName }}.svg?style=flat-square)](./LICENSE)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=flat-square)](https://conventionalcommits.org)
+
+{{ gtAnnotation }}
+
+## Installation
+
+`npm install {{ projectName }}`
+
+`yarn add {{ projectName }}`
+
+## Usage
+
+```js
+import {{ projectName }} from '{{ projectName }}';
+```
+
+# Change Log
+
+[Change Log](./CHANGELOG.md)
+
+# Contributing
+
+[Contributing](./CONTRIBUTING.md)
+
+# Licence
+
+[MIT](./LICENSE)
