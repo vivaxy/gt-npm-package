@@ -42,14 +42,14 @@ gt scaffold for npm packages
 import {{ projectName }} from '{{ projectName }}';
 ```
 
-# Change Log
+## Change Log
 
-[Change Log](./CHANGELOG.md)
+[Change log](./CHANGELOG.md)
 
-# Contributing
+## Contributing
 
 [Contributing](./CONTRIBUTING.md)
 
-# Licence
+## Licence
 
 [MIT](./LICENSE)
