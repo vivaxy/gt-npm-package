@@ -10,17 +10,18 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.24.1",
-    "eslint": "^3.19.0",
-    "eslint-config-vivaxy": "^0.1.1",
     "execa": "^0.6.3",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.1.0",
     "listr": "^0.11.0",
+    "prettier": "^1.10.2",
     "standard-version": "^4.0.0"
   },
   "scripts": {
     "build": "node ./scripts/build.js",
-    "lint": "eslint ./src",
     "release": "npm run lint && npm run build && standard-version && git push --follow-tags && npm publish",
-    "release-gt": "standard-version && git push --follow-tags"
+    "release-gt": "standard-version && git push --follow-tags",
+    "precommit": "lint-staged"
   },
   "repository": {
     "type": "git",
@@ -34,5 +35,11 @@
   "bugs": {
     "url": "https://github.com/vivaxy/gt-npm-package/issues"
   },
-  "homepage": "https://github.com/vivaxy/gt-npm-package#readme"
+  "homepage": "https://github.com/vivaxy/gt-npm-package#readme",
+  "lint-staged": {
+    "**/**.{js,json,pcss,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
 }
