@@ -5,7 +5,7 @@
   "main": "./build/index.js",
   "scripts": {
     "build": "node ./scripts/build.js",
-    "release": "npm run lint && npm run build && standard-version && git push --follow-tags && npm publish",
+    "release": "npm run build && standard-version && git push --follow-tags && npm publish",
     "release-gt": "standard-version && git push --follow-tags",
     "precommit": "lint-staged"
   },
