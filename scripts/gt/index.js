@@ -6,13 +6,13 @@
 import Listr from 'listr';
 import execa from 'execa';
 
-const sleep = (timeout) => {
-    return new Promise((resolve) => {
+const sleep = timeout => {
+    return new Promise(resolve => {
         setTimeout(resolve, timeout);
     });
 };
 
-const copyFiles = (options) => {
+const copyFiles = options => {
     const { presets } = options;
 
     const files = [
@@ -20,28 +20,28 @@ const copyFiles = (options) => {
         'src',
         '.babelrc',
         '.editorconfig',
-        '.eslintrc',
         '.gitignore',
         '.npmignore',
         '.npmrc',
-        'LICENSE',
+        '.prettierignore',
         'CONTRIBUTING.md',
-        'yarn.lock',
+        'LICENSE',
+        'yarn.lock'
     ];
-    return async() => {
+    return async () => {
         await sleep(1000);
         await presets.copyFiles(files);
     };
 };
 
-const updatePackageJSON = (options) => {
+const updatePackageJSON = options => {
     const { project, presets } = options;
     const projectGit = project.git || {};
     const filename = 'package.json';
 
-    return async() => {
+    return async () => {
         await sleep(1000);
-        await presets.updateJson(filename, (json) => {
+        await presets.updateJson(filename, json => {
             const {
                 version,
                 description,
@@ -54,7 +54,7 @@ const updatePackageJSON = (options) => {
                 bugs,
                 dependencies,
                 devDependencies,
-                peerDependencies,
+                peerDependencies
             } = json;
 
             return {
@@ -66,66 +66,68 @@ const updatePackageJSON = (options) => {
                 scripts,
                 repository: {
                     ...repository,
-                    url: projectGit.repositoryURL,
+                    url: projectGit.repositoryURL
                 },
                 keywords,
                 author,
                 license,
                 bugs: {
                     ...bugs,
-                    url: undefined,
+                    url: undefined
                 },
                 dependencies,
                 devDependencies,
-                peerDependencies,
+                peerDependencies
             };
         });
     };
 };
 
-const updateREADME = (options) => {
+const updateREADME = options => {
     const { project, presets } = options;
     const filename = 'README.md';
 
-    return async() => {
+    return async () => {
         await sleep(1000);
-        await presets.updateFile(filename, (content) => {
+        await presets.updateFile(filename, content => {
             const projectData = content.split('----------\n\n')[1];
             return projectData
                 .replace(/{{ projectName }}/g, project.name)
-                .replace(/{{ gtAnnotation }}/g,
-                    'Initialized by [vivaxy/gt-npm-package](https://github.com/vivaxy/gt-npm-package).');
+                .replace(
+                    /{{ gtAnnotation }}/g,
+                    'Initialized by [vivaxy/gt-npm-package](https://github.com/vivaxy/gt-npm-package).'
+                );
         });
     };
 };
 
 const yarnInstall = () => {
-    return async() => {
+    return async () => {
         await execa('yarn', ['install']);
     };
 };
 
-export const init = async(options) => {
+export const init = async options => {
     return new Listr([
         {
             title: 'copy files',
-            task: copyFiles(options),
+            task: copyFiles(options)
         },
         {
             title: 'update package.json',
-            task: updatePackageJSON(options),
+            task: updatePackageJSON(options)
         },
         {
             title: 'update README.md',
-            task: updateREADME(options),
+            task: updateREADME(options)
         },
         {
             title: 'run yarn install',
-            task: yarnInstall(options),
-        },
+            task: yarnInstall(options)
+        }
     ]);
 };
 
-export const after = async() => {
+export const after = async () => {
     console.log('\nWHAM!\n'); // eslint-disable-line no-console
 };
